@@ -18,11 +18,11 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.message = '';
-    this.getProduct(this.route.snapshot.paramMap.get('id'));
+    this.getProduct(this.route.snapshot.paramMap.get('ProductId'));
   }
 
-  getProduct(id): void {
-    this.productService.read(id)
+  getProduct(ProductId): void {
+    this.productService.read(ProductId)
       .subscribe(
         product => {
           this.currentProduct = product;
@@ -33,17 +33,19 @@ export class ProductDetailsComponent implements OnInit {
         });
   }
 
+
   setAvailableStatus(status): void {
     const data = {
-      name: this.currentProduct.name,
-      description: this.currentProduct.description,
-      available: status
+      ProductName: this.currentProduct.ProductName,
+      ProductPrice: this.currentProduct.ProductPrice,
+      Description: this.currentProduct.Description,
+      Status: this.currentProduct.Status
     };
 
-    this.productService.update(this.currentProduct.id, data)
+    this.productService.update(this.currentProduct.ProductId, data)
       .subscribe(
         response => {
-          this.currentProduct.available = status;
+          this.currentProduct.Status = status;
           console.log(response);
         },
         error => {
@@ -52,7 +54,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   updateProduct(): void {
-    this.productService.update(this.currentProduct.id, this.currentProduct)
+    this.productService.update(this.currentProduct.ProductId, this.currentProduct)
       .subscribe(
         response => {
           console.log(response);
@@ -64,7 +66,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   deleteProduct(): void {
-    this.productService.delete(this.currentProduct.id)
+    this.productService.delete(this.currentProduct.ProductId)
       .subscribe(
         response => {
           console.log(response);

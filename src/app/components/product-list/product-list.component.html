@@ -27,7 +27,7 @@
         [class.active]="i == currentIndex"
         (click)="setCurrentProduct(product, i)"
       >
-
+      {{product.ProductName}}
       </li>
     </ul>
 
@@ -43,11 +43,9 @@
       </div>
       <div>
         <label><strong>Description:</strong></label>
-
       </div>
       <div>
         <label><strong>Status:</strong></label>
-
       </div>
 
       <a class="badge badge-warning" routerLink="/products/">

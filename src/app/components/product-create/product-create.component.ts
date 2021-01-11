@@ -8,9 +8,10 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductCreateComponent implements OnInit {
   product = {
-    name: '',
-    description: '',
-    available: false
+      ProductName: '',
+      ProductPrice: '',
+      Description: '',
+      Status: ''
   };
   submitted = false;
 
@@ -21,8 +22,10 @@ export class ProductCreateComponent implements OnInit {
 
   createProduct(): void {
     const data = {
-      name: this.product.name,
-      description: this.product.description
+      ProductName: this.product.ProductName,
+      ProductPrice: this.product.ProductPrice,
+      Description: this.product.Description,
+      Status: this.product.Status
     };
 
     this.productService.create(data)
@@ -39,10 +42,10 @@ export class ProductCreateComponent implements OnInit {
   newProduct(): void {
     this.submitted = false;
     this.product = {
-      name: '',
-      description: '',
-      available: false
+      ProductName: '',
+      ProductPrice: '',
+      Description: '',
+      Status: ''
     };
   }
-
 }
